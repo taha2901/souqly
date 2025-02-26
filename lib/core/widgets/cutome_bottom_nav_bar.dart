@@ -25,6 +25,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
     return [
       const HomePage(),
       const CartPage(),
+      const PaymentPage(),
       const FavoritesPage(),
       const ProfilePage(),
     ];
@@ -51,10 +52,12 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         inactiveColorPrimary: ColorsManager.grey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(
-          CupertinoIcons.heart,
-          color: Colors.white,
-        ),
+          icon: Image.asset('assets/online-order 1.png'),
+          title: "Payment",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: ColorsManager.grey),
+      PersistentBottomNavBarItem(
+        icon: Image.asset('assets/notification (4) 2.png'),
         title: "Favorites",
         activeColorPrimary: Colors.white,
         inactiveColorPrimary: ColorsManager.grey,
@@ -75,9 +78,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: InkWell(
-            // onTap: () => Navigator.pop(context),
-            child: Image.asset('assets/Frame 33101.png')),
+        leading: InkWell(child: Image.asset('assets/Frame 33101.png')),
         title: currentIndex == 1
             ? Text(
                 "My Cart",
@@ -154,6 +155,19 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         navBarHeight: kBottomNavigationBarHeight,
         navBarStyle:
             NavBarStyle.style1, // Choose the nav bar style with this property
+      ),
+    );
+  }
+}
+
+class PaymentPage extends StatelessWidget {
+  const PaymentPage({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Payment Page'),
       ),
     );
   }

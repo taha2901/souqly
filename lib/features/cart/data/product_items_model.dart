@@ -51,10 +51,12 @@ class ProductItemModel {
       isFavorite: isFavorite ?? this.isFavorite,
       category: category ?? this.category,
       averageRate: averageRate ?? this.averageRate,
-      // quantity: quantity ?? this.quantity,
+      quantity: quantity ?? this.quantity,
       // productSize: productSize ?? this.productSize,
     );
   }
+
+  double get totalPrice => price * quantity;
 }
 
 List<ProductItemModel> dummyProducts = [

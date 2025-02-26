@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:souq/core/helpers/spacing.dart';
 import 'package:souq/core/theming/styles.dart';
 import 'package:souq/features/cart/data/product_items_model.dart';
+import 'package:souq/features/cart/logic/cart_cubit.dart';
 import 'package:souq/features/cart/ui/widget/product_counter_bloc_builder.dart';
 
 class CartItem extends StatelessWidget {
@@ -49,7 +51,7 @@ class CartItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "100 LE",
+                         "${product.totalPrice} LE",
                         style: TextStyles.font15BlackBold,
                       ),
                       Spacer(),
@@ -61,7 +63,9 @@ class CartItem extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Iconsax.trash),
-              onPressed: () {},
+              onPressed: () {
+                context.read<CartCubit>().removeFromCart(product.id);
+              },
             ),
           ],
         ),

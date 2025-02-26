@@ -13,9 +13,9 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<CartCubit, CartState>(
         bloc: BlocProvider.of<CartCubit>(context),
-        buildWhen: (previous, current) => current is CartLoading || current is CartLoaded,
+        buildWhen: (previous, current) =>
+            current is CartLoading || current is CartLoaded,
         builder: (context, state) {
-
           if (state is CartLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is CartLoaded) {
@@ -33,6 +33,19 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
                 CheckoutButton(),
+                BlocBuilder<CartCubit, CartState>(
+                  builder: (context, state) {
+                    final totalPrice = context.read<CartCubit>().totalPrice;
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Total Price: $totalPrice LE",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  },
+                ),
               ],
             );
           } else {
