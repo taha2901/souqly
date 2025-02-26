@@ -33,19 +33,19 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
                 CheckoutButton(),
-                BlocBuilder<CartCubit, CartState>(
-                  builder: (context, state) {
-                    final totalPrice = context.read<CartCubit>().totalPrice;
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Total Price: $totalPrice LE",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  },
-                ),
+                // BlocBuilder<CartCubit, CartState>(
+                //   builder: (context, state) {
+                //     final totalPrice = context.read<CartCubit>().totalPrice;
+                //     return Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Text(
+                //         "Total Price: $totalPrice LE",
+                //         style: TextStyle(
+                //             fontSize: 18, fontWeight: FontWeight.bold),
+                //       ),
+                //     );
+                //   },
+                // ),
               ],
             );
           } else {
